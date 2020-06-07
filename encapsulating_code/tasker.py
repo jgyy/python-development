@@ -1,5 +1,3 @@
-# python -m doctest -v tasker.py
-
 def print_todo(todo):
     """
     print_todo takes in a todo dictionary and prints it out
@@ -24,18 +22,28 @@ def take_first(todos):
     {'name': 'Example 1', 'body': 'This is a test task', 'points': '3'}
     >>> todos
     [{'name': 'Task 2', 'body': 'Yet another example task', 'points': '2'}]
+    >>> todos = []
+    >>> take_first(todos)
+    (None, [])
     """
-    todo = todos.pop(0)
-    return (todo, todos)
+    if todos:
+        todo = todos.pop(0)
+        return (todo, todos)
+    else:
+        return (None, [])
 
-def sum_points(todo1, todo2):
+def sum_points(todos):
     """
     sum_points receives two todo dictionaries and returns sum of their `point` values.
 
     >>> todos = [{'name': 'Example 1', 'body': 'This is a test task', 'points': '3'},
-    ... {'name': 'Task 2', 'body': 'Yet another example task', 'points': '2'}]
-    >>> sum_points(todos[0], todos[1])
-    5
+    ... {'name': 'Task 2', 'body': 'Yet another example task', 'points': '2'},
+    ... {'name': 'Task 3', 'body': 'Third task', 'points': '5'}]
+    >>> sum_points(todos)
+    10
     """
-    return int(todo1['points']) + int(todo2['points'])
+    total = 0
+    for todo in todos:
+        total += int(todo['points'])
+    return total
 
