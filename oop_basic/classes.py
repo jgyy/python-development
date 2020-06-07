@@ -1,3 +1,8 @@
+"""
+>>> import sys
+>>> sys.version > "3.5"
+True
+"""
 import math
 
 # python -m doctest -v .\oop_basic\classes.py
@@ -14,10 +19,8 @@ class Car:
         Car consist of engine and tires
 
         >>> car = Car('4-cylinder', ['a', 'b', 'c', 'd'])
-        >>> car.engine
-        '4-cylinder'
-        >>> car.tires
-        ['a', 'b', 'c', 'd']
+        >>> (car.engine, car.tires)
+        ('4-cylinder', ['a', 'b', 'c', 'd'])
         """
         self.engine = engine
         self.tires = tires
@@ -61,18 +64,8 @@ class Tire:
         Design details of a tire.
 
         >>> tire = Tire('P', 205, 65, 15)
-        >>> tire.tire_type
-        'P'
-        >>> tire.width
-        205
-        >>> tire.ratio
-        65
-        >>> tire.diameter
-        15
-        >>> tire.brand
-        ''
-        >>> tire.construction
-        'R'
+        >>> (tire.tire_type, tire.width, tire.ratio, tire.diameter, tire.brand, tire.construction)
+        ('P', 205, 65, 15, '', 'R')
         """
         self.tire_type = tire_type
         self.width = width
@@ -86,12 +79,21 @@ class Tire:
         Represent the tire's information in the standard notation present
         on the side of the tire. Example: 'P215/65R15'
 
-        >>> tire = Tire('P', 205, 75, 15)
-        >>> tire
+        >>> Tire('P', 205, 75, 15)
         P205/75R15
         """
         return (f"{self.tire_type}{self.width}/{self.ratio}"
                 + f"{self.construction}{self.diameter}")
+
+    def _side_wall_inches(self):
+        """
+        Calculate the length of side walls in inches.
+
+        >>> tire = Tire('P', 254, 65, 15)
+        >>> tire._side_wall_inches()
+        6.5
+        """
+        return (self.width * (self.ratio / 100)) / 25.4
 
     def circumference(self):
         """
@@ -101,8 +103,49 @@ class Tire:
         >>> tire.circumference()
         80.1
         """
-        side_wall_inches = (self.width * (self.ratio / 100)) / 25.4
+        side_wall_inches = self._side_wall_inches()
         total_diameter = side_wall_inches * 2 + self.diameter
+        return round(total_diameter * math.pi, 1)
+
+class SnowTire(Tire):
+    """
+    Tire represents a snow tire that would be used with an automobile.
+
+    >>> type(SnowTire)
+    <class 'type'>
+    """
+
+    def __init__(self, tire_type, width, ratio, diameter, chain_thickness, brand='', construction='R'):
+        """
+        Design details of a snowtire.
+
+        >>> tire = SnowTire('P', 205, 65, 15, 2)
+        >>> (tire.tire_type, tire.width, tire.ratio, tire.diameter, tire.chain_thickness, tire.brand, tire.construction)
+        ('P', 205, 65, 15, 2, '', 'R')
+        """
+        super().__init__(tire_type, width, ratio, diameter, brand, construction)
+        self.chain_thickness = chain_thickness
+
+    def __repr__(self):
+        """
+        Represent the snowtire's information in the standard notation present
+        on the side of the tire. Example: 'P215/65R15 (Snow)'
+
+        >>> SnowTire('P', 205, 75, 15, 2)
+        P205/75R15 (Snow)
+        """
+        return super().__repr__() + " (Snow)"
+
+    def circumference(self):
+        """
+        The circumference of a tire w/ show chains in inches.
+
+        >>> tire = SnowTire('P', 205, 65, 15, 2)
+        >>> tire.circumference()
+        92.7
+        """
+        side_wall_inches = self._side_wall_inches()
+        total_diameter = (side_wall_inches + self.chain_thickness) * 2 + self.diameter
         return round(total_diameter * math.pi, 1)
 
 # create a Honda Civic
