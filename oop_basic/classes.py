@@ -164,3 +164,9 @@ honda.description()
 print(honda.wheel_circumference())
 honda.tires = []
 print(honda.wheel_circumference())
+
+# Polymorphism
+tire = SnowTire('P', 205, 65, 15, 2)
+tires = [tire, tire, tire, tire]
+honda = Car(tires=tires, engine='4-cylinder')
+print(honda.wheel_circumference())
