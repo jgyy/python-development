@@ -13,4 +13,4 @@ cd Python-3.8.2
 make altinstall
 
 # Upgrade Pip
-pip3.7 install --upgrade pip
+pip install --upgrade pip
