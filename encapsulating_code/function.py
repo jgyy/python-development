@@ -33,8 +33,7 @@ def add_two(num):
     """
     Returns original number plus 2
 
-    >>> result = add_two(3)
-    >>> result
+    >>> add_two(3)
     5
     """
     return num + 2
@@ -47,8 +46,7 @@ def add(num1, num2):
     """
     Returns the sum of 2 numbers
 
-    >>> result = add(1, 3)
-    >>> result
+    >>> add(1, 3)
     4
     """
     return num1 + num2
@@ -61,8 +59,7 @@ def contact_card(name, age, car_model):
     """
     Returns a sentence based on 3 arguments.
 
-    >>> result = contact_card("name", 32, "car_model")
-    >>> result
+    >>> contact_card("name", 32, "car_model")
     'name is 32 and drives a car_model'
     """
     return f"{name} is {age} and drives a {car_model}"
@@ -77,8 +74,7 @@ def can_drive(age, driving_age=16):
     """
     Returns a sentence based on 3 arguments.
 
-    >>> result = can_drive(21)
-    >>> result
+    >>> can_drive(21)
     True
     """
     return age >= driving_age
