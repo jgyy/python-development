@@ -1,7 +1,7 @@
 # Handling Errors with try/except/else/finally
 import sys
 
-file_name = 'recipes.txt'
+file_name = './uses_debug/recipes.txt'
 
 try:
     my_file = open(file_name, 'x+')
