@@ -116,14 +116,15 @@ class SnowTire(Tire):
     <class 'type'>
     """
 
-    def __init__(self, tire_type, width, ratio, diameter, chain_thickness, brand='', construction='R'):
+    def __init__(self, tire_type, dimension, chain_thickness, brand='', construction='R'):
         """
         Design details of a snowtire.
 
-        >>> tire = SnowTire('P', 205, 65, 15, 2)
+        >>> tire = SnowTire('P', (205, 65, 15), 2)
         >>> (tire.tire_type, tire.width, tire.ratio, tire.diameter, tire.chain_thickness, tire.brand, tire.construction)
         ('P', 205, 65, 15, 2, '', 'R')
         """
+        width, ratio, diameter = dimension
         super().__init__(tire_type, width, ratio, diameter, brand, construction)
         self.chain_thickness = chain_thickness
 
@@ -132,7 +133,7 @@ class SnowTire(Tire):
         Represent the snowtire's information in the standard notation present
         on the side of the tire. Example: 'P215/65R15 (Snow)'
 
-        >>> SnowTire('P', 205, 75, 15, 2)
+        >>> SnowTire('P', (205, 75, 15), 2)
         P205/75R15 (Snow)
         """
         return super().__repr__() + " (Snow)"
@@ -141,7 +142,7 @@ class SnowTire(Tire):
         """
         The circumference of a tire w/ show chains in inches.
 
-        >>> tire = SnowTire('P', 205, 65, 15, 2)
+        >>> tire = SnowTire('P', (205, 65, 15), 2)
         >>> tire.circumference()
         92.7
         """
@@ -167,7 +168,7 @@ honda.tires = []
 print(honda.wheel_circumference())
 
 # Polymorphism
-tire = SnowTire('P', 205, 65, 15, 2)
+tire = SnowTire('P', (205, 65, 15), 2)
 tires = [tire, tire, tire, tire]
 honda = Car(tires=tires, engine='4-cylinder')
 print(honda.wheel_circumference())
