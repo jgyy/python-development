@@ -1,11 +1,12 @@
 """
+python -m doctest -v .\oop_basic\classes.py
+
 >>> import sys
 >>> sys.version > "3.5"
 True
 """
 import math
 
-# python -m doctest -v .\oop_basic\classes.py
 class Car:
     """
     Car models a car w/ tires and an engine
