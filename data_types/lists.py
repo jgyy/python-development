@@ -8,6 +8,7 @@ print(my_list[2])
 # (or too low) then we'll receive an error
 # print(my_list[5])
 
+# we can access subsections of a list by "slicing" it.
 print(len(my_list))
 print(my_list[0:2])
 print(my_list[1:])
