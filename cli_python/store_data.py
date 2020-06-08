@@ -21,8 +21,10 @@ def s_3(client, infile, bucket, name):
     """
     upload file to aws s3
 
-    >>> True
-    True
+    >>> import boto3
+    >>> client = boto3.client('s3')
+    >>> infile = open('.\cli_python\example.txt', 'rb')
+    >>> s_3(client, infile, 'py0', infile.name)
     """
     client.upload_fileobj(infile, bucket, name)
 
