@@ -18,6 +18,6 @@ def dump(url):
 
 # Manual Testing
 dump = dump('postgres://jgyy:jgyy@13.229.82.53:80/sample')
-f = open('dump.sql', 'w+b')
+f = open('.\cli_python\dump.sql', 'w+b')
 f.write(dump.stdout.read())
 f.close()
