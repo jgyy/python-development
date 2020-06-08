@@ -1,3 +1,6 @@
+# python .\cli_python\project_setup.py build
+# python .\cli_python\project_setup.py install
+# Unit test is not possible with "setup"
 from setuptools import find_packages, setup
 
 with open('README.md', 'r') as f:
