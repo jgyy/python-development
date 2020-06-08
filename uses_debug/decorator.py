@@ -1,5 +1,8 @@
 # python -m doctest -v .\uses_debug\decorator.py
+# python -m pdb .\uses_debug\decorator.py
 """
+Decorators
+
 >>> import sys
 >>> sys.version > "3.5"
 True
