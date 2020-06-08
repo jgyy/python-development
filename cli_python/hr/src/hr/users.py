@@ -1,4 +1,5 @@
-import pwd
+# pwd is broken in windows
+import os as pwd
 
 # We're naming our function fetch_users
 def fetch_users():

@@ -20,11 +20,11 @@ def main():
     import sys
 
     # Here, we want to import the export and users modules
-    from hr import export, users
+    from cli_python.hr.src.hr import export
 
     # We're importing as u, because users is probably what
     # the list will be named.
-    from hr import users as u
+    from cli_python.hr.src.hr import users as u
 
     # Here we're going to create a parser, and immediately
     # have it start parsing the args, so that we have access
