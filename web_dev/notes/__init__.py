@@ -1,7 +1,7 @@
 """
 $Env:FLASK_ENV = "development"
 $Env:FLASK_APP = './web_dev/notes'
-flask run --host=0.0.0.0 --port=3000
+flask run --host=127.0.0.1 --port=3000
 """
 import os
 
